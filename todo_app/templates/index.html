@@ -4,29 +4,16 @@
 {% block content %}
   <div class="jumbotron">
     <h1 class="display-4">To-Do App</h1>
-    <p class="lead">Just another to-do app.</p>
+    <p class="lead">Bus Board.</p>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+      <h2>Bus stops near NW5 1TL</h2>
       <ul class="list-group mb-4">
-        <!-- List the todo items here -->
-        {% for item in items %}
-          <li>{{ item.title }}</li>
-        {% endfor %}
+          <li>{{ live_stops['departures']}}</li>
       </ul>
     </div>
   </div>
-
-  <form action="/" method="post" class="new-todo-form">
-  <div class="new-todo-form">
-    <label for="title">Enter the title: </label>
-    <input type="text" name="title" id="title" required>
-  </div>
-  <div class="new-todo-form">
-    <input type="submit" value="Add todo">
-  </div>
-</form>
 
 {% endblock %}
