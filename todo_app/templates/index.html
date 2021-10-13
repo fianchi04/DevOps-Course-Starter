@@ -14,7 +14,7 @@
         <!-- List the todo items here -->
         {% for todo in todos %}
           <li>{{ todo.title }}
-          <form action={{url_for('complete_card', id=todo.id)}} method="put" class"complete-todo-form">
+          <form action={{url_for("complete_card", id=todo.id)}} method="put" class"complete-todo-form">
             <div class="complete-todo-form">
               <input type="submit" value "mark as completed">
             </div>
