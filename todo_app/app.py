@@ -17,7 +17,7 @@ def post():
     todo_items.create_todo(request.form.get('title'))
     return render_template('index.html', todos=todo_items.get_todos(), dones=todo_items.get_dones())
 
-@app.route('/complete_card/<id>', methods = ['GET', 'POST', 'PUT'])
+@app.route('/complete_card/<id>', methods = ['GET'])
 def complete_card(id):
     print("here")
     todo_items.update_todo_change_list(id)
