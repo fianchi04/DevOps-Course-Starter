@@ -13,13 +13,12 @@ app.config.from_object(Config)
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        todo_items.create_todo()
-        session_items.add_item(request.form.get('title'))
-        return render_template('index.html', items=session_items.get_items()) 
+        todo_items.create_todo(request.form.get('title'))
+        return render_template('index.html', items=todo_items.get_todos())
         ##todo: separate routes for adding todo https://github.com/fianchi04/DevOps-Course-Starter/pull/1#discussion_r628209452
 
     if request.method == 'GET':
-        return render_template('index.html', items=session_items.get_items())
+        return render_template('index.html', todo_items.get_todos())
 
 
 if __name__ == '__main__':
