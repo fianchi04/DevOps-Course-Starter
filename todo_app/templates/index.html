@@ -18,6 +18,19 @@
         {% endfor %}
       </ul>
     </div>
+    </div>
+
+<form action="/card" method="post" class="new-todo-form">
+  <div class="new-todo-form">
+    <label for="title">Enter the title: </label>
+    <input type="text" name="title" id="title" required>
+  </div>
+  <div class="new-todo-form">
+    <input type="submit" value="Add todo">
+  </div>
+</form>
+
+  <div class="row">
     <div class="col-md-12">
       <h2>Done</h2>
       <ul class="list-group mb-4">
@@ -28,15 +41,8 @@
       </ul>
     </div>
   </div>
+</div>
 
-  <form action="/" method="post" class="new-todo-form">
-  <div class="new-todo-form">
-    <label for="title">Enter the title: </label>
-    <input type="text" name="title" id="title" required>
-  </div>
-  <div class="new-todo-form">
-    <input type="submit" value="Add todo">
-  </div>
-</form>
+  
 
 {% endblock %}

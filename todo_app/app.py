@@ -12,7 +12,7 @@ app.config.from_object(Config)
 def index():
     return render_template('index.html', todos=todo_items.get_todos(), dones=todo_items.get_dones())
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/card', methods = ['GET', 'POST'])
 def post():
     todo_items.create_todo(request.form.get('title'))
     return render_template('index.html', todos=todo_items.get_todos(), dones=todo_items.get_dones())
