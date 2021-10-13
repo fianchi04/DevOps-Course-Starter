@@ -17,7 +17,13 @@ def post():
     todo_items.create_todo(request.form.get('title'))
     return render_template('index.html', todos=todo_items.get_todos(), dones=todo_items.get_dones())
 
-#def update_card_list():
+@app.route('/complete_card/<id>', methods = ['PUT'])
+def complete_card(id):
+    print("here")
+    todo_items.update_todo_change_list(id)
+    return render_template('index.html', todos=todo_items.get_todos(), dones=todo_items.get_dones())
+
+
 
 
 if __name__ == '__main__':
