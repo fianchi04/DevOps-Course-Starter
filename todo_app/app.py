@@ -23,8 +23,5 @@ def complete_card(id):
     todo_items.update_todo_change_list(id)
     return redirect("/")
 
-
-
-
 if __name__ == '__main__':
     app.run()
