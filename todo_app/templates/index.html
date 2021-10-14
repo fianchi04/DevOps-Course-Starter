@@ -13,13 +13,15 @@
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
         {% for todo in todos %}
+        <span>
           <li>{{ todo.title }}
-          <form action={{url_for("complete_card", id=todo.id)}} class"complete-todo-form">
-            <div class="complete-todo-form">
-              <input type="submit" value "mark as completed">
-            </div>
-          </form>
+            <form action={{url_for("complete_card", id=todo.id)}} class"complete-todo-form">
+              <div class="complete-todo-form">
+                <input type="submit" value "mark as completed">
+              </div>
+            </form>
           </li>
+        </span>
 
         {% endfor %}
       </ul>
