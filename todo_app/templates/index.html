@@ -9,17 +9,26 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+      <h2>Todo</h2>
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
-        {% for item in items %}
-          <li>{{ item.title }}</li>
+        {% for todo in todos %}
+        <span>
+          <li>{{ todo.title }}
+            <form action={{url_for("complete_card", id=todo.id)}} class"complete-todo-form">
+              <div class="complete-todo-form">
+                <input type="submit" value "mark as completed">
+              </div>
+            </form>
+          </li>
+        </span>
+
         {% endfor %}
       </ul>
     </div>
-  </div>
+    </div>
 
-  <form action="/" method="post" class="new-todo-form">
+<form action="/card" method="post" class="new-todo-form">
   <div class="new-todo-form">
     <label for="title">Enter the title: </label>
     <input type="text" name="title" id="title" required>
@@ -28,5 +37,20 @@
     <input type="submit" value="Add todo">
   </div>
 </form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Done</h2>
+      <ul class="list-group mb-4">
+        {% for done in dones %}
+          <li>{{ done.title }}</li>
+
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+  
 
 {% endblock %}

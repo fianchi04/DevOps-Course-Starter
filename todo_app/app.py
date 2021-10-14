@@ -1,5 +1,5 @@
-from todo_app.data import session_items
-from flask import Flask
+from todo_app.data import trello_client
+from flask import Flask, redirect
 from flask import render_template
 from flask import request
 
@@ -8,17 +8,20 @@ from todo_app.flask_config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
-
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        session_items.add_item(request.form.get('title'))
-        return render_template('index.html', items=session_items.get_items()) 
-    if request.method == 'GET':
-        return render_template('index.html', items=session_items.get_items())
+    return render_template('index.html', todos=trello_client.get_todos(), dones=trello_client.get_dones())
 
+@app.route('/card', methods = ['GET', 'POST'])
+def post():
+    trello_client.create_todo(request.form.get('title'))
+    return redirect("/")
 
-
+@app.route('/complete_card/<id>', methods = ['GET'])
+def complete_card(id):
+    print("here")
+    trello_client.update_todo_change_list(id)
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run()
